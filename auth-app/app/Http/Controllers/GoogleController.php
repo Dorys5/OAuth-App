@@ -9,34 +9,36 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
-class GithubController extends Controller
+class GoogleController extends Controller
 {
     public function redirect()
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     public function callback()
     {
         try {
-            $user = Socialite::driver('github')->user();
-
-            $existingUser = User::where('email', $user->email)->first();
+            $user = Socialite::driver('google')->user();
+            $existingUser = User::where('google_id', $user->id)->first();
+            // @dd($existingUser);
 
             if ($existingUser) {
                 Auth::login($existingUser);
                 return redirect()->route('dashboard');
             } else {
-                $gitUser = User::create([
-                    'name' => $user->nickname,
+                $googleUser = User::create([
+                    'name' => $user->name,
                     'nickname' => $user->nickname,
                     'email' => $user->email,
-                    'auth_type' => 'github',
+                    'google_id' => $user->id,
+                    'auth_type' => 'google',
                     'password' => Hash::make(Str::random(10))
                 ]);
 
-                Auth::login($gitUser);
-                return view("dasboard");
+                Auth::login($googleUser);
+
+                return view("dashboard");
             }
         } catch (\Exception $e) {
             return redirect()->route('login')->withErrors('Une erreur est survenue lors de la connexion avec GitHub.');
