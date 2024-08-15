@@ -82,3 +82,12 @@ FACEBOOK_REDIRECT=http://localhost:8000/auth/facebook/callback
 
 php artisan migrate
 
+----
+
+## usage
+Login: Use the login form to authenticate using your credentials or choose one of the social login options.
+Session Management: Sessions are managed securely using Laravel's session handling features.
+Component Interaction: Utilize Livewire components for a seamless user experience.
+To start the development server, run:
+php artisan serve
+
