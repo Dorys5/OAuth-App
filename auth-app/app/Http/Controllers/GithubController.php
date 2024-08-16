@@ -18,6 +18,7 @@ class GithubController extends Controller
 
     public function callback()
     {
+        
         try {
             $user = Socialite::driver('github')->user();
 

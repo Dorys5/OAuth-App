@@ -46,5 +46,19 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_CALLBACK_URI'),
 
-    ]
+   ],
+
+    'linkedin' => [
+        'client_id' => '77pplkzvo2cbpv',
+        'client_secret' =>'KeGbB37CUr57U70F',
+        'redirect' => 'http://127.0.0.1:8000/linkedin/callback',
+
+    ],
+
+    // 'facebook' => [
+    //     'facebook_id' => '77pplkzvo2cbpv',
+    //     'facebook_secret' =>'KeGbB37CUr57U70F',
+    //     'facebook' => 'http://127.0.0.1:8000/linkedin/callback',
+
+    // ]
 ];

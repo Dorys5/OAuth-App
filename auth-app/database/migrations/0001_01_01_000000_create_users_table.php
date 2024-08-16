@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('github_id')->nullable();
             $table->string('google_id')->nullable();
+            $table->string('linkedin_id')->nullable();
             $table->string('auth_type')->nullable();
             $table->rememberToken();
             $table->timestamps();
